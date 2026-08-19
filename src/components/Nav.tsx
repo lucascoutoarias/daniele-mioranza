@@ -35,7 +35,6 @@ export default function Nav() {
         <div className="nav-links-right">
           <a href="#fashion">FASHION</a>
           <a href="#publicidade">PUBLICIDADE</a>
-          <Link href="/mentoria">CONSULTORIA</Link>
         </div>
 
         {/* Hamburger (mobile only) */}
@@ -75,7 +74,6 @@ export default function Nav() {
           </a>
           <a href="#fashion" onClick={() => setOpen(false)}>FASHION</a>
           <a href="#publicidade" onClick={() => setOpen(false)}>PUBLICIDADE</a>
-          <Link href="/mentoria" onClick={() => setOpen(false)}>CONSULTORIA</Link>
         </div>
       )}
     </>

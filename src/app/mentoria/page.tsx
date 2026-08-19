@@ -21,6 +21,11 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
+  // Página escondida de propósito: fora do menu, sem indexação, até decidirem publicar de vez.
+  robots: {
+    index: false,
+    follow: false,
+  },
   keywords: [
     "como entrar no mundo da moda",
     "consultoria de moda",

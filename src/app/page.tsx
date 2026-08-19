@@ -13,9 +13,9 @@ export default function Home() {
       <Nav />
       <main>
         <HeroGrid />
+        <PublicidadeSection />
         <WorksGrid />
         <FashionSection />
-        <PublicidadeSection />
         <AboutSection />
       </main>
     </>

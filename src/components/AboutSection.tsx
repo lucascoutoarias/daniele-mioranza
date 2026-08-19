@@ -16,6 +16,15 @@ export default function AboutSection() {
         <Link href="/sobre" className="about-link">
           Ver portfólio completo
         </Link>
+
+        <div className="about-contact">
+          <a href="https://www.instagram.com/danielemioranza/" target="_blank" rel="noopener">
+            @danielemioranza
+          </a>
+          <a href="mailto:danielemoirancasunshine@gmail.com">
+            danielemoirancasunshine@gmail.com
+          </a>
+        </div>
       </div>
       <div className="about-image">
         <div className="about-image-inner">
