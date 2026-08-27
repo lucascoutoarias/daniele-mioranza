@@ -21,8 +21,8 @@ export default function AboutSection() {
           <a href="https://www.instagram.com/danielemioranza/" target="_blank" rel="noopener">
             @danielemioranza
           </a>
-          <a href="mailto:danielemoirancasunshine@gmail.com">
-            danielemoirancasunshine@gmail.com
+          <a href="mailto:danielemioranza@gmail.com">
+            danielemioranza@gmail.com
           </a>
         </div>
       </div>
@@ -32,9 +32,9 @@ export default function AboutSection() {
             src="/images/carousel/body-4.webp"
             alt="Daniele Mioranza"
             fill
-            unoptimized
+            sizes="(max-width: 767px) 100vw, 50vw"
             style={{ objectFit: "cover" }}
-            quality={100}
+            quality={90}
           />
         </div>
       </div>

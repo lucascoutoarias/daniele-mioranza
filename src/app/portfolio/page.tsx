@@ -61,8 +61,9 @@ export default function SobrePage() {
                 src={polas[current]}
                 alt={`Foto ${current + 1}`}
                 fill
+                quality={90}
+                sizes="(max-width: 767px) 100vw, 50vw"
                 style={{ objectFit: "cover" }}
-                unoptimized
                 priority
               />
             </div>

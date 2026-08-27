@@ -66,8 +66,7 @@ function CrossfadeImage({ src, priority }: { src: string; priority?: boolean }) 
           src={layers[i]}
           alt="Daniele Mioranza"
           fill
-          unoptimized
-          quality={100}
+          quality={90}
           sizes="(max-width: 767px) 100vw, 33vw"
           style={{
             objectFit: "cover",
