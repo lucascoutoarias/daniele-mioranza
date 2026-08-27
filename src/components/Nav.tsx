@@ -11,7 +11,7 @@ export default function Nav() {
       <nav className="main-nav">
         {/* Left links */}
         <div className="nav-links-left">
-          <Link href="/sobre">SOBRE</Link>
+          <Link href="/sobre">PORTFÓLIO</Link>
           <a href="https://www.instagram.com/danielemioranza/" target="_blank" rel="noopener">
             INSTAGRAM
           </a>

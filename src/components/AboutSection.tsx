@@ -29,7 +29,7 @@ export default function AboutSection() {
       <div className="about-image">
         <div className="about-image-inner">
           <Image
-            src="/images/carousel/amapo.jpg"
+            src="/images/carousel/body-4.webp"
             alt="Daniele Mioranza"
             fill
             style={{ objectFit: "cover" }}

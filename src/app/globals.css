@@ -136,6 +136,13 @@ a { color: inherit; text-decoration: none; }
 
 .hero-card:hover img { transform: scale(1.04); }
 
+.hero-card-fade { animation: heroFadeIn 0.5s ease; }
+
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .hero-card-label {
   position: absolute;
   bottom: 12px;
@@ -510,6 +517,29 @@ a { color: inherit; text-decoration: none; }
   margin: 40px 0;
 }
 
+.sobre-measurements {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 24px 32px;
+  margin: 40px 0;
+}
+
+.sobre-measure-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.sobre-measure-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-top: 4px;
+}
+
 .sobre-stat-num {
   font-family: 'Playfair Display', serif;
   font-size: 36px;
@@ -578,6 +608,7 @@ a { color: inherit; text-decoration: none; }
   .sobre-container { grid-template-columns: 1fr !important; gap: 40px; }
   .sobre-name { font-size: 32px; }
   .sobre-stats { gap: 24px; }
+  .sobre-measurements { grid-template-columns: repeat(3, auto); gap: 20px 24px; }
 }
 
 @media (max-width: 1023px) {

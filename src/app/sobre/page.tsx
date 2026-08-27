@@ -2,9 +2,20 @@
 import Image from "next/image";
 import Nav from "@/components/Nav";
 import CustomCursor from "@/components/CustomCursor";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
-const polas = Array.from({ length: 9 }, (_, i) => `/images/polas/pola-${i + 1}.jpg`);
+const polas = Array.from({ length: 13 }, (_, i) => `/images/polas/pola-${i + 1}.jpg`);
+
+const MEASUREMENTS = [
+  { label: "Altura", value: "170" },
+  { label: "Manequim", value: "36" },
+  { label: "Busto", value: "83" },
+  { label: "Cintura", value: "62" },
+  { label: "Quadril", value: "89" },
+  { label: "Sapato", value: "36" },
+  { label: "Cabelo", value: "Preto" },
+  { label: "Olhos", value: "Verdes" },
+];
 
 export default function SobrePage() {
   const [current, setCurrent] = useState(0);
@@ -12,6 +23,13 @@ export default function SobrePage() {
 
   const prev = () => setCurrent((c) => (c - 1 + polas.length) % polas.length);
   const next = () => setCurrent((c) => (c + 1) % polas.length);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCurrent((c) => (c + 1) % polas.length);
+    }, 4000);
+    return () => clearInterval(id);
+  }, [current]);
 
   const onTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -83,19 +101,13 @@ export default function SobrePage() {
               publicitárias, sempre com entrega técnica e presença marcante.
             </p>
 
-            <div className="sobre-stats">
-              <div>
-                <div className="sobre-stat-num">10+</div>
-                <div className="sobre-stat-label">Anos de carreira</div>
-              </div>
-              <div>
-                <div className="sobre-stat-num">50+</div>
-                <div className="sobre-stat-label">Marcas</div>
-              </div>
-              <div>
-                <div className="sobre-stat-num">100+</div>
-                <div className="sobre-stat-label">Campanhas</div>
-              </div>
+            <div className="sobre-measurements">
+              {MEASUREMENTS.map((m) => (
+                <div key={m.label} className="sobre-measure-item">
+                  <div className="sobre-measure-value">{m.value}</div>
+                  <div className="sobre-measure-label">{m.label}</div>
+                </div>
+              ))}
             </div>
 
             <a
