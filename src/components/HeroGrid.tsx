@@ -2,17 +2,13 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const AMAPO = [
-  "/images/carousel/amapo.jpg",
-  "/images/carousel/amapo2.jpg",
-  "/images/carousel/amapo3.jpg",
-];
+const HERO_PHOTOS = Array.from({ length: 7 }, (_, i) => `/images/carousel/hero-${i + 1}.jpg`);
 
 export default function HeroGrid() {
   const [offset, setOffset] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => setOffset((o) => (o + 1) % 3), 3000);
+    const id = setInterval(() => setOffset((o) => (o + 1) % HERO_PHOTOS.length), 3000);
     return () => clearInterval(id);
   }, []);
 
@@ -23,15 +19,14 @@ export default function HeroGrid() {
           <div key={i} className="hero-card">
             <div className="hero-card-inner">
               <Image
-                src={AMAPO[(offset + i) % 3]}
-                alt={`AMAPO ${i + 1}`}
+                src={HERO_PHOTOS[(offset + i) % HERO_PHOTOS.length]}
+                alt="Daniele Mioranza"
                 fill
                 sizes="(max-width: 767px) 100vw, 33vw"
                 style={{ objectFit: "cover" }}
                 priority={i === 0}
               />
             </div>
-            <span className="hero-card-label">AMAPO</span>
           </div>
         ))}
       </div>

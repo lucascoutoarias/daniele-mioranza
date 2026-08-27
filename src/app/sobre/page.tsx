@@ -4,7 +4,7 @@ import Nav from "@/components/Nav";
 import CustomCursor from "@/components/CustomCursor";
 import { useState, useRef } from "react";
 
-const polas = Array.from({ length: 9 }, (_, i) => `/images/polas/pola-${i + 1}.jpg`);
+const polas = Array.from({ length: 13 }, (_, i) => `/images/polas/pola-${i + 1}.jpg`);
 
 export default function SobrePage() {
   const [current, setCurrent] = useState(0);
