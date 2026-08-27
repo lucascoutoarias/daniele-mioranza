@@ -11,7 +11,7 @@ export default function Nav() {
       <nav className="main-nav">
         {/* Left links */}
         <div className="nav-links-left">
-          <Link href="/sobre">PORTFÓLIO</Link>
+          <Link href="/portfolio">PORTFÓLIO</Link>
           <a href="https://www.instagram.com/danielemioranza/" target="_blank" rel="noopener">
             INSTAGRAM
           </a>
@@ -33,8 +33,8 @@ export default function Nav() {
 
         {/* Right links */}
         <div className="nav-links-right">
-          <a href="#fashion">FASHION</a>
-          <a href="#publicidade">PUBLICIDADE</a>
+          <Link href="/#fashion">FASHION</Link>
+          <Link href="/#publicidade">PUBLICIDADE</Link>
         </div>
 
         {/* Hamburger (mobile only) */}
@@ -63,7 +63,7 @@ export default function Nav() {
       {open && (
         <div className="nav-overlay">
           <button className="nav-overlay-close" onClick={() => setOpen(false)}>×</button>
-          <Link href="/sobre" onClick={() => setOpen(false)}>SOBRE</Link>
+          <Link href="/portfolio" onClick={() => setOpen(false)}>PORTFÓLIO</Link>
           <a
             href="https://www.instagram.com/danielemioranza/"
             target="_blank"
@@ -72,8 +72,8 @@ export default function Nav() {
           >
             INSTAGRAM
           </a>
-          <a href="#fashion" onClick={() => setOpen(false)}>FASHION</a>
-          <a href="#publicidade" onClick={() => setOpen(false)}>PUBLICIDADE</a>
+          <Link href="/#fashion" onClick={() => setOpen(false)}>FASHION</Link>
+          <Link href="/#publicidade" onClick={() => setOpen(false)}>PUBLICIDADE</Link>
         </div>
       )}
     </>

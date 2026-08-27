@@ -88,6 +88,7 @@ const gridProjects = [
 export default function WorksGrid() {
   return (
     <section className="works-section">
+      <h2>Trabalhos Realizados</h2>
       <div className="works-grid">
         {gridProjects.map((p) => (
           <WorksGridCard key={p.title} title={p.title} images={p.images} />

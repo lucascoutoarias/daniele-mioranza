@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const FACES = ["/images/carousel/face-1.webp", "/images/carousel/face-2.webp", "/images/carousel/face-3.webp"];
 const BODIES = [
@@ -16,17 +16,9 @@ type Frame = { mode: "A" | "B"; faceCursor: number; bodyCursor: number };
 // os cursores avançam pelas duas listas sem repetir, trocando o padrão a cada troca
 function nextFrame(frame: Frame): Frame {
   if (frame.mode === "A") {
-    return {
-      mode: "B",
-      faceCursor: frame.faceCursor + 1,
-      bodyCursor: frame.bodyCursor + 2,
-    };
+    return { mode: "B", faceCursor: frame.faceCursor + 1, bodyCursor: frame.bodyCursor + 2 };
   }
-  return {
-    mode: "A",
-    faceCursor: frame.faceCursor + 2,
-    bodyCursor: frame.bodyCursor + 1,
-  };
+  return { mode: "A", faceCursor: frame.faceCursor + 2, bodyCursor: frame.bodyCursor + 1 };
 }
 
 function slotsFor(frame: Frame): string[] {
@@ -39,11 +31,61 @@ function slotsFor(frame: Frame): string[] {
   return [body(frame.bodyCursor), face(frame.faceCursor), body(frame.bodyCursor + 1)];
 }
 
+function CrossfadeImage({ src, priority }: { src: string; priority?: boolean }) {
+  const [layers, setLayers] = useState<[string, string]>([src, src]);
+  const [active, setActive] = useState<0 | 1>(0);
+  const prevSrc = useRef(src);
+  const rafIds = useRef<number[]>([]);
+
+  useEffect(() => {
+    if (src === prevSrc.current) return;
+    prevSrc.current = src;
+    const inactive = active === 0 ? 1 : 0;
+    setLayers((l) => {
+      const next = [...l] as [string, string];
+      next[inactive] = src;
+      return next;
+    });
+    const raf1 = requestAnimationFrame(() => {
+      const raf2 = requestAnimationFrame(() => setActive(inactive as 0 | 1));
+      rafIds.current.push(raf2);
+    });
+    rafIds.current.push(raf1);
+    return () => {
+      rafIds.current.forEach(cancelAnimationFrame);
+      rafIds.current = [];
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [src]);
+
+  return (
+    <>
+      {[0, 1].map((i) => (
+        <Image
+          key={i}
+          src={layers[i]}
+          alt="Daniele Mioranza"
+          fill
+          unoptimized
+          quality={100}
+          sizes="(max-width: 767px) 100vw, 33vw"
+          style={{
+            objectFit: "cover",
+            opacity: active === i ? 1 : 0,
+            transition: "opacity 1000ms ease, transform 0.6s ease",
+          }}
+          priority={priority && i === 0}
+        />
+      ))}
+    </>
+  );
+}
+
 export default function HeroGrid() {
   const [frame, setFrame] = useState<Frame>({ mode: "A", faceCursor: 0, bodyCursor: 0 });
 
   useEffect(() => {
-    const id = setInterval(() => setFrame((f) => nextFrame(f)), 1800);
+    const id = setInterval(() => setFrame((f) => nextFrame(f)), 2600);
     return () => clearInterval(id);
   }, []);
 
@@ -55,16 +97,7 @@ export default function HeroGrid() {
         {slots.map((src, i) => (
           <div key={i} className="hero-card">
             <div className="hero-card-inner">
-              <Image
-                key={src}
-                src={src}
-                alt="Daniele Mioranza"
-                fill
-                sizes="(max-width: 767px) 100vw, 33vw"
-                style={{ objectFit: "cover" }}
-                priority={i === 1}
-                className="hero-card-fade"
-              />
+              <CrossfadeImage src={src} priority={i === 1} />
             </div>
           </div>
         ))}

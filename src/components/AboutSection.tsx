@@ -13,7 +13,7 @@ export default function AboutSection() {
         <p>
           Apaixonada pela arte e pela moda, une elegância e versatilidade em cada trabalho.
         </p>
-        <Link href="/sobre" className="about-link">
+        <Link href="/portfolio" className="about-link">
           Ver portfólio completo
         </Link>
 
@@ -32,6 +32,7 @@ export default function AboutSection() {
             src="/images/carousel/body-4.webp"
             alt="Daniele Mioranza"
             fill
+            unoptimized
             style={{ objectFit: "cover" }}
             quality={100}
           />

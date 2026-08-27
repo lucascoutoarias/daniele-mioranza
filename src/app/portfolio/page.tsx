@@ -4,7 +4,7 @@ import Nav from "@/components/Nav";
 import CustomCursor from "@/components/CustomCursor";
 import { useState, useRef, useEffect } from "react";
 
-const polas = Array.from({ length: 13 }, (_, i) => `/images/polas/pola-${i + 1}.jpg`);
+const polas = Array.from({ length: 13 }, (_, i) => `/images/polas/pola-${i + 1}.webp`);
 
 const MEASUREMENTS = [
   { label: "Altura", value: "170" },

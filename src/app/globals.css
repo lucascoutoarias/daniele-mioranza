@@ -136,13 +136,6 @@ a { color: inherit; text-decoration: none; }
 
 .hero-card:hover img { transform: scale(1.04); }
 
-.hero-card-fade { animation: heroFadeIn 0.5s ease; }
-
-@keyframes heroFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 .hero-card-label {
   position: absolute;
   bottom: 12px;
@@ -157,7 +150,19 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ─── WORKS GRID ─── */
-.works-section { padding: 0 48px 80px; }
+.works-section {
+  padding: 80px 48px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.works-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
 
 .works-grid {
   display: grid;
@@ -589,7 +594,7 @@ a { color: inherit; text-decoration: none; }
   .hero-section { padding: 80px 16px 40px; }
   .hero-grid { grid-template-columns: repeat(1, 1fr) !important; }
 
-  .works-section { padding: 0 16px 40px; }
+  .works-section { padding: 48px 16px; }
   .works-grid { grid-template-columns: repeat(2, 1fr) !important; }
 
   .fashion-section { padding: 48px 16px; }
