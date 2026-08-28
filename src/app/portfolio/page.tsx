@@ -13,7 +13,7 @@ const MEASUREMENTS = [
   { label: "Cintura", value: "62" },
   { label: "Quadril", value: "89" },
   { label: "Sapato", value: "36" },
-  { label: "Cabelo", value: "Preto" },
+  { label: "Cabelo", value: "Castanho Escuro" },
   { label: "Olhos", value: "Verdes" },
 ];
 
@@ -89,7 +89,7 @@ export default function SobrePage() {
             <p className="sobre-role">Modelo Profissional</p>
 
             <p className="sobre-bio">
-              Natural do Sul do Brasil, Daniele iniciou sua carreira nas passarelas de Porto Alegre
+              Natural do Sul do Brasil, Daniele iniciou sua carreira nas passarelas de São Paulo
               e expandiu sua presença para os principais eventos de moda do país.
             </p>
             <p className="sobre-bio">
