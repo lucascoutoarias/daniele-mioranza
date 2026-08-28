@@ -10,25 +10,18 @@ const BODIES = [
   "/images/carousel/body-4.webp",
 ];
 
-type Frame = { mode: "A" | "B"; faceCursor: number; bodyCursor: number };
+// mode A (tick par): rosto | corpo | rosto — mode B (tick ímpar): corpo | rosto | corpo
+// face(tick) e body(tick) avançam 1 posição a cada troca, sempre — nenhuma foto fica
+// travada numa posição fixa, e o par mostrado varia a cada rodada em vez de repetir.
+function slotsForTick(tick: number): string[] {
+  const face = (n: number) => FACES[((n % FACES.length) + FACES.length) % FACES.length];
+  const body = (n: number) => BODIES[((n % BODIES.length) + BODIES.length) % BODIES.length];
+  const mode: "A" | "B" = tick % 2 === 0 ? "A" : "B";
 
-// mode A: rosto | corpo | rosto — mode B: corpo | rosto | corpo
-// os cursores avançam pelas duas listas sem repetir, trocando o padrão a cada troca
-function nextFrame(frame: Frame): Frame {
-  if (frame.mode === "A") {
-    return { mode: "B", faceCursor: frame.faceCursor + 1, bodyCursor: frame.bodyCursor + 2 };
+  if (mode === "A") {
+    return [face(tick), body(tick), face(tick + 1)];
   }
-  return { mode: "A", faceCursor: frame.faceCursor + 2, bodyCursor: frame.bodyCursor + 1 };
-}
-
-function slotsFor(frame: Frame): string[] {
-  const face = (n: number) => FACES[n % FACES.length];
-  const body = (n: number) => BODIES[n % BODIES.length];
-
-  if (frame.mode === "A") {
-    return [face(frame.faceCursor), body(frame.bodyCursor), face(frame.faceCursor + 1)];
-  }
-  return [body(frame.bodyCursor), face(frame.faceCursor), body(frame.bodyCursor + 1)];
+  return [body(tick), face(tick), body(tick + 1)];
 }
 
 function CrossfadeImage({ src, priority }: { src: string; priority?: boolean }) {
@@ -81,14 +74,14 @@ function CrossfadeImage({ src, priority }: { src: string; priority?: boolean }) 
 }
 
 export default function HeroGrid() {
-  const [frame, setFrame] = useState<Frame>({ mode: "A", faceCursor: 0, bodyCursor: 0 });
+  const [tick, setTick] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => setFrame((f) => nextFrame(f)), 2600);
+    const id = setInterval(() => setTick((t) => t + 1), 2600);
     return () => clearInterval(id);
   }, []);
 
-  const slots = slotsFor(frame);
+  const slots = slotsForTick(tick);
 
   return (
     <section className="hero-section">

@@ -89,8 +89,8 @@ export default function SobrePage() {
             <p className="sobre-role">Modelo Profissional</p>
 
             <p className="sobre-bio">
-              Natural do Sul do Brasil, Daniele iniciou sua carreira nas passarelas de São Paulo
-              e expandiu sua presença para os principais eventos de moda do país.
+              Natural do Paraná, Daniele iniciou sua carreira nas passarelas de São Paulo
+              e expandiu sua presença para o Brasil.
             </p>
             <p className="sobre-bio">
               Participou de desfiles em São Paulo Fashion Week, colaborou com marcas como SAAD,
