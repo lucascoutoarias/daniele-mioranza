@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://danielemioranza.com"
   ),
-  title: "Daniele Mioranza | Modelo",
+  title: "Daniele Mioranza | Artista",
   description: "Portfolio de Daniele Mioranza — modelo, desfiles e campanhas publicitárias.",
 };
 
