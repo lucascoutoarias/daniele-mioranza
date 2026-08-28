@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -19,15 +18,8 @@ export default function Nav() {
 
         {/* Center logo */}
         <div className="nav-logo-wrap">
-          <Link href="/">
-            <Image
-              src="/images/logo-branco.webp"
-              alt="Daniele Mioranza"
-              width={180}
-              height={34}
-              className="nav-logo"
-              priority
-            />
+          <Link href="/" className="nav-logo-text">
+            DANIELE MIORANZA
           </Link>
         </div>
 

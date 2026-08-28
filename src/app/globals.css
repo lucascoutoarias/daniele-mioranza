@@ -44,7 +44,14 @@ a { color: inherit; text-decoration: none; }
   flex: 1;
 }
 
-.nav-logo { width: 180px; height: auto; }
+.nav-logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  color: #fff;
+}
 
 .nav-links-right { display: flex !important; }
 .nav-links-left  { display: flex !important; }
@@ -585,7 +592,7 @@ a { color: inherit; text-decoration: none; }
     top: 20px !important;
   }
 
-  .nav-logo { width: 140px !important; height: 26px !important; }
+  .nav-logo-text { font-size: 13px !important; }
   .nav-links-left  { display: none !important; }
   .nav-links-right { display: none !important; }
   .nav-hamburger   { display: flex !important; }
